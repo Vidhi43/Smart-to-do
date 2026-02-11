@@ -134,3 +134,9 @@ npm start
 Frontend runs at:
 http://localhost:3000
 
+## 🌍 Live Demo
+
+Frontend: https://smart-to-do-v74l.vercel.app/  
+Backend API: https://smart-to-do-1rj2.onrender.com/
+
+

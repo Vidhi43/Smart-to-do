@@ -11,15 +11,15 @@ const CalendarView = () => {
   const [filteredTasks, setFilteredTasks] = useState([]);
 
   useEffect(() => {
-    loadTasks();
+    const loadTasks = async () => {
+      const allTasks = await getTasks();
+      setTasks(allTasks);
+      filterTasksForDate(new Date(), allTasks);
+    };
 
+    loadTasks();
   }, []);
 
-  const loadTasks = async () => {
-    const allTasks = await getTasks();
-    setTasks(allTasks);
-    filterTasksForDate(new Date(), allTasks);
-  };
 
   const filterTasksForDate = (date, taskList = tasks) => {
     const dateStr = date.toLocaleDateString("en-CA"); // YYYY-MM-DD

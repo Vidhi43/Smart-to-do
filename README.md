@@ -93,18 +93,18 @@ When a recurring task is marked complete, the system automatically generates the
 
 ## 📂 Project Structure
 
-Smart-to-do/
-│
-├── backend/
-│ ├── main.py
-│ ├── requirements.txt
-│
-├── frontend/
-│ ├── public/
-│ ├── src/
-│ ├── package.json
-│
-└── README.md
+Smart-to-do/<br/>
+│<br/>
+├── backend/<br/>
+│ ├── main.py<br/>
+│ ├── requirements.txt<br/>
+│<br/>
+├── frontend/<br/>
+│ ├── public/<br/>
+│ ├── src/<br/>
+│ ├── package.json<br/>
+│<br/>
+└── README.md<br/>
 
 
 ---

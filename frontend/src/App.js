@@ -14,7 +14,6 @@ import {
 } from "react-bootstrap";
 import {
   FaTasks,
-  FaChartBar,
   FaCalendarAlt,
   FaMicrophone
 } from "react-icons/fa";

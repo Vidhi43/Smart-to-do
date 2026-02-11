@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { Card, ListGroup } from "react-bootstrap";
 import { getTasks } from "../services/api";
-import { format, parseISO, isBefore, isAfter, isSameDay } from "date-fns";
+import { format, parseISO, isBefore } from "date-fns";
 
 const CalendarView = () => {
   const [tasks, setTasks] = useState([]);
@@ -12,6 +12,7 @@ const CalendarView = () => {
 
   useEffect(() => {
     loadTasks();
+
   }, []);
 
   const loadTasks = async () => {

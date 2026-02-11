@@ -1,0 +1,122 @@
+body {
+  background: linear-gradient(135deg, #f4f6fb, #e8efff);
+  font-family: "Poppins", sans-serif;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #4a6cf7, #a46cf7);
+  -webkit-background-clip: text;  /* For Chrome, Safari */
+  background-clip: text;          /* Standard property */
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-card {
+  border-radius: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.nav-pills .nav-link {
+  border-radius: 2rem;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+}
+
+.nav-pills .nav-link.active {
+  background: linear-gradient(to right, #5b7dff, #8e60ff);
+  color: white;
+}
+
+.card {
+  border-radius: 1.2rem;
+}
+
+/* Make calendar look elegant and larger */
+.custom-calendar {
+  width: 100% !important;
+  max-width: 550px;
+  background: transparent !important;
+  font-family: "Poppins", sans-serif;
+  border: none !important;
+  font-size: 1rem;
+}
+
+/* Calendar tile (date) styling */
+.react-calendar__tile {
+  min-height: 60px !important;
+  padding: 12px 0 !important;
+  border-radius: 12px !important;
+  box-sizing: border-box !important;
+  transition: all 0.25s ease-in-out !important;
+}
+
+/* Hover effect */
+.react-calendar__tile:hover {
+  background: rgba(130, 150, 255, 0.15) !important;
+  transform: none;
+}
+
+/* Active (selected) date */
+.react-calendar__tile--active {
+  background: linear-gradient(135deg, #5c7cfa, #9775fa) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 10px rgba(120, 100, 255, 0.4) !important;
+  transform: none !important;
+  border: none !important;
+}
+
+/* Month navigation buttons */
+.react-calendar__navigation button {
+  color: #4a4cff !important;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 6px 12px;
+  transition: 0.3s;
+}
+
+.react-calendar__navigation button:hover {
+  background: rgba(120, 120, 255, 0.1) !important;
+  transform: scale(1.05);
+}
+
+/* Weekday names */
+.react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #6c63ff;
+  letter-spacing: 0.5px;
+}
+
+/* Month label */
+.react-calendar__navigation__label {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Highlight today's date */
+.react-calendar__tile--now {
+  background: rgba(120, 130, 255, 0.15) !important;
+  color: #4a4cf7 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 8px rgba(100, 100, 255, 0.2) !important;
+  transform: none !important;
+  border: 1px solid rgba(140, 160, 255, 0.3) !important;
+}
+
+/* Hover effect for today's date */
+.react-calendar__tile--now:hover {
+  background: rgba(170, 150, 255, 0.45) !important;
+  color: #3b2ef5 !important;
+  transform: scale(1.05);
+}
+
+.react-calendar__month-view__days__day {
+  margin: 0 !important;
+  padding: 0 !important;
+}

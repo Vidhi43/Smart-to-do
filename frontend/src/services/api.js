@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://smart-to-do-1rj2.onrender.com";
 
 // 🔹 GET all tasks
 export const getTasks = async () => {

@@ -111,7 +111,18 @@ Smart-to-do/<br/>
 
 ## ⚙️ How to Run Locally
 
-### 1 Start Backend
+### 1 Update Frontend API URL
+
+Open this file:
+```bash
+frontend/src/services/api.js
+```
+Change API_BASE to
+```bash
+const API_BASE = "http://127.0.0.1:8000";
+```
+
+### 2 Start Backend
 
 ```bash
 cd backend
@@ -124,7 +135,7 @@ uvicorn main:app --reload
 Backend runs at:
 http://127.0.0.1:8000
 
-### 2 Start Frontend
+### 3 Start Frontend
 
 ```bash
 cd frontend

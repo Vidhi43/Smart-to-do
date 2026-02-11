@@ -8,53 +8,58 @@ import { format, parseISO, isBefore } from "date-fns";
 const CalendarView = () => {
   const [tasks, setTasks] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [filteredTasks, setFilteredTasks] = useState([]);
 
+  // Load tasks once
   useEffect(() => {
     const loadTasks = async () => {
       const allTasks = await getTasks();
       setTasks(allTasks);
-      filterTasksForDate(new Date(), allTasks);
     };
 
     loadTasks();
   }, []);
 
-
-  const filterTasksForDate = (date, taskList = tasks) => {
-    const dateStr = date.toLocaleDateString("en-CA"); // YYYY-MM-DD
-    const todayTasks = taskList.filter((t) => t.due_date === dateStr);
-    setFilteredTasks(todayTasks);
-    setSelectedDate(date);
-  };
+  // Filter tasks dynamically (no extra state needed)
+  const filteredTasks = tasks.filter(
+    (t) =>
+      t.due_date === selectedDate.toLocaleDateString("en-CA")
+  );
 
   const onDateClick = (date) => {
-    filterTasksForDate(date);
+    setSelectedDate(date);
   };
 
   const getTaskStatusColor = (task) => {
     const today = new Date();
     const dueDate = parseISO(`${task.due_date}T${task.due_time || "00:00"}`);
-    if (task.done) return "text-secondary"; // gray for completed
-    if (isBefore(dueDate, today)) return "text-danger"; // red for overdue
-    return "text-success"; // green for upcoming
+
+    if (task.done) return "text-secondary"; // completed
+    if (isBefore(dueDate, today)) return "text-danger"; // overdue
+    return "text-success"; // upcoming
   };
 
-  // ---- Calendar customization ----
+  // Calendar dots
   const tileContent = ({ date }) => {
     const dateStr = date.toLocaleDateString("en-CA");
     const dayTasks = tasks.filter((t) => t.due_date === dateStr);
 
     if (dayTasks.length > 0) {
       const hasOverdue = dayTasks.some(
-        (t) => !t.done && isBefore(parseISO(`${t.due_date}T${t.due_time || "00:00"}`), new Date())
+        (t) =>
+          !t.done &&
+          isBefore(
+            parseISO(`${t.due_date}T${t.due_time || "00:00"}`),
+            new Date()
+          )
       );
+
       const hasCompleted = dayTasks.every((t) => t.done);
+
       const color = hasOverdue
-        ? "#ff4d4f" // red
+        ? "#ff4d4f"
         : hasCompleted
-        ? "#999" // gray
-        : "#3cb371"; // green
+        ? "#999"
+        : "#3cb371";
 
       return (
         <div
@@ -69,15 +74,16 @@ const CalendarView = () => {
         </div>
       );
     }
+
     return null;
   };
 
   return (
     <div className="p-4 text-center">
       <h4 className="fw-bold mb-3 text-gradient">
-        <i className="bi bi-calendar2-check me-2 text-primary"></i>
         Task Calendar
       </h4>
+
       <div className="mb-2">
         <span className="text-danger fw-semibold me-3">● Overdue</span>
         <span className="text-success fw-semibold me-3">● Upcoming</span>
@@ -110,7 +116,6 @@ const CalendarView = () => {
           />
         </Card>
 
-        {/* ---- Daily Task List ---- */}
         <Card
           className="shadow-sm border-0"
           style={{
@@ -129,6 +134,7 @@ const CalendarView = () => {
           >
             Tasks for {format(selectedDate, "dd MMM yyyy")}
           </Card.Header>
+
           <Card.Body>
             {filteredTasks.length > 0 ? (
               <ListGroup variant="flush">
@@ -146,9 +152,13 @@ const CalendarView = () => {
                     }}
                   >
                     <div className="text-start">
-                      <strong className="text-dark">{task.title}</strong>
+                      <strong className="text-dark">
+                        {task.title}
+                      </strong>
                       {task.notes && (
-                        <div className="small text-muted">{task.notes}</div>
+                        <div className="small text-muted">
+                          {task.notes}
+                        </div>
                       )}
                     </div>
                     <div className="small text-muted">
@@ -158,7 +168,9 @@ const CalendarView = () => {
                 ))}
               </ListGroup>
             ) : (
-              <p className="text-muted mb-0">No tasks for this day.</p>
+              <p className="text-muted mb-0">
+                No tasks for this day.
+              </p>
             )}
           </Card.Body>
         </Card>
